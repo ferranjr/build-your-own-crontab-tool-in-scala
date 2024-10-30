@@ -15,7 +15,34 @@ Providing the crontab expression (ie: `*/15 0 1,15 * 1-5 /usr/bin/find`)
 - Displays a human-readable explanation
 - Displays the next 5 instances of the cron
 
+# How To Run
+## Requirements
+This is a Scala project, built using `sbt`, so ideally we will require the `sbt` to be installed.
+It can easily be installed using `sdkman` or `homebrew`, more details in https://www.scala-sbt.org/1.x/docs/Installing-sbt-on-Mac.html
+
 ```shell
+#SDKMAN!
+sdk install java $(sdk list java | grep -o "\b8\.[0-9]*\.[0-9]*\-tem" | head -1)
+sdk install sbt
+
+# Homebrew
+brew install sbt
+```
+
+## Running The Tests
+Once SBT is installed, to run the tests suite, simply use sbt from the root directory of the project.
+```shell
+sbt test
+```
+The command will build and run the tests
+
+## Running the App with SBT
+An option to run the application can be using directly `sbt`, for that we will need to scape the string argument.
+```shell
+sbt "run \"*/15 0 1,15 * 1-5 /usr/bin/find\""
+```
+
+```
 cronTabTool */15 0 1,15 * 1-5 /usr/bin/find
 
 minutes       0 15 30 45
